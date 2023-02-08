@@ -1,0 +1,16 @@
+[package]
+name = "keycloak_join_users"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = { version = "0.11", features = ["blocking", "serde_json", "json"] }
+serde = { version = "1.0.126", features = ["derive"] }
+serde_json = "1.0.89"
+tokio = { version = "1.10.0", features = ["full"] }
+oauth2 =  { version = "4.3.0" }
+thiserror = "1.0.35"
+log = "0.4.14"
+env_logger = "0.10.0"
