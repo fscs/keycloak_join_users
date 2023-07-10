@@ -30,7 +30,7 @@ struct User {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn error::Error>> {
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Setup logging log level to debug
     env_logger::builder()
         .filter_level(log::LevelFilter::Debug)
@@ -81,7 +81,7 @@ impl KeycloakClient {
         realm_extended: String,
         user: String,
         password: String,
-    ) -> Result<Self, Box<dyn error::Error>> {
+    ) -> Result<Self, Box<dyn std::error::Error>> {
         let oauth_client = BasicClient::new(
             ClientId::new("admin-cli".to_string()),
             None,
@@ -118,7 +118,7 @@ impl KeycloakClient {
         })
     }
 
-    async fn get_all_base_users(&self) -> Result<Vec<User>, Box<dyn error::Error>> {
+    async fn get_all_base_users(&self) -> Result<Vec<User>, Box<dyn std::error::Error>> {
         // Create a request
         Ok(self
             .reqwest_client
@@ -133,7 +133,7 @@ impl KeycloakClient {
             .await?)
     }
 
-    async fn get_all_extended_users(&self) -> Result<Vec<User>, Box<dyn error::Error>> {
+    async fn get_all_extended_users(&self) -> Result<Vec<User>, Box<dyn std::error::Error>> {
         // Create a request
         Ok(self
             .reqwest_client
@@ -148,7 +148,7 @@ impl KeycloakClient {
             .await?)
     }
 
-    async fn link_accounts(&self, base_user: &User, extended_user: &User) -> Result<(), Box<dyn error::Error>> {
+    async fn link_accounts(&self, base_user: &User, extended_user: &User) -> Result<(), Box<dyn std::error::Error>> {
         // Create a request
         let text = self
             .reqwest_client
